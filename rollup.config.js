@@ -1,8 +1,7 @@
 const resolve = require("@rollup/plugin-node-resolve").nodeResolve;
-const alias = require("@rollup/plugin-alias");
+const alias = require("@rollup/plugin-alias").default;
 const path = require("path");
-const pluginTypeScript = require("@babel/preset-typescript");
-const { babel } = require("@rollup/plugin-babel");
+const commonjs = require("@rollup/plugin-commonjs").default;
 
 const root = __dirname;
 
@@ -12,16 +11,17 @@ module.exports = [
     output: {
       file: "./dist/es6/xterm.js",
       format: "esm", // umd
-      sourcemap: true,
+      // sourcemap: true,
     },
     plugins: [
+      commonjs(),
       alias({
-        entries: [
-          { find: /^common\/(.*)/, replacement: path.join(root, "./out/common/$1") },
-          { find: /^browser\/(.*)/, replacement: path.join(root, "./out/browser/$1") },
-        ],
+        entries: {
+          common: path.resolve(root, "out/common"),
+          browser: path.resolve(root, "out/browser"),
+        },
       }),
-      resolve({}),
+      resolve(),
     ],
   },
   // {
