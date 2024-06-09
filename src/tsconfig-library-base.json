@@ -5,6 +5,10 @@
     "strict": true,
     "declarationMap": true,
     "experimentalDecorators": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "isolatedModules": true,
+    "target": "ESNext"
   }
 }

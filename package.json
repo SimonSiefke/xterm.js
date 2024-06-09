@@ -59,8 +59,13 @@
     "vtfeatures": "node bin/extract_vtfeatures.js src/**/*.ts src/*.ts"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.7",
     "@lunapaint/png-codec": "^0.2.0",
     "@playwright/test": "^1.37.1",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/chai": "^4.2.22",
     "@types/debug": "^4.1.7",
     "@types/deep-equal": "^1.0.1",
@@ -88,6 +93,7 @@
     "mustache": "^4.2.0",
     "node-pty": "1.1.0-beta5",
     "nyc": "^15.1.0",
+    "rollup": "^4.18.0",
     "source-map-loader": "^3.0.0",
     "source-map-support": "^0.5.20",
     "ts-loader": "^9.3.1",
