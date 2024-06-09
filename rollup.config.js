@@ -8,7 +8,7 @@ const root = __dirname;
 
 module.exports = [
   {
-    input: path.join(__dirname, "src/browser/public/Terminal.ts"),
+    input: path.join(__dirname, "out/browser/public/Terminal.js"),
     output: {
       file: "./dist/es6/xterm.js",
       format: "esm", // umd
@@ -17,19 +17,11 @@ module.exports = [
     plugins: [
       alias({
         entries: [
-          { find: /^common\/(.*)/, replacement: path.join(root, "./src/common/$1") },
-          { find: /^browser\/(.*)/, replacement: path.join(root, "./src/browser/$1") },
+          { find: /^common\/(.*)/, replacement: path.join(root, "./out/common/$1") },
+          { find: /^browser\/(.*)/, replacement: path.join(root, "./out/browser/$1") },
         ],
       }),
-      resolve({
-        extensions: [".d.ts", ".ts", ".js"],
-      }),
-
-      babel({
-        babelHelpers: "bundled",
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-        presets: [pluginTypeScript],
-      }),
+      resolve({}),
     ],
   },
   // {
