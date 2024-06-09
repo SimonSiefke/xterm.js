@@ -2,6 +2,7 @@ const resolve = require("@rollup/plugin-node-resolve").nodeResolve;
 const alias = require("@rollup/plugin-alias").default;
 const path = require("path");
 const commonjs = require("@rollup/plugin-commonjs").default;
+const terser = require("@rollup/plugin-terser").default;
 
 const root = __dirname;
 
@@ -9,9 +10,9 @@ module.exports = [
   {
     input: path.join(__dirname, "out/browser/public/Terminal.js"),
     output: {
-      file: "./dist/es6/xterm.js",
-      format: "esm", // umd
-      // sourcemap: true,
+      file: "./dist/esm/xterm.js",
+      format: "esm",
+      sourcemap: true,
     },
     plugins: [
       commonjs(),
@@ -22,6 +23,7 @@ module.exports = [
         },
       }),
       resolve(),
+      terser(),
     ],
   },
   // {
