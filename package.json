@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "prepackage": "npm run build",
-    "package": "webpack",
+    "package": "rollup -c",
     "package-headless": "webpack --config ./webpack.config.headless.js",
     "postpackage-headless": "node ./bin/package_headless.js",
     "start": "node demo/start",

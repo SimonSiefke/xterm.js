@@ -6,14 +6,25 @@ const terser = require("@rollup/plugin-terser").default;
 
 const root = __dirname;
 
+/**
+ * @type {import('rollup').RollupOptions[]}
+ */
 module.exports = [
   {
     input: path.join(__dirname, "out/browser/public/Terminal.js"),
-    output: {
-      file: "./dist/esm/xterm.js",
-      format: "esm",
-      sourcemap: true,
-    },
+    output: [
+      {
+        file: "./lib/esm/xterm.js",
+        format: "esm",
+        sourcemap: true,
+      },
+      {
+        file: "./lib/xterm.js",
+        format: "umd",
+        sourcemap: true,
+        name: "xterm",
+      },
+    ],
     plugins: [
       commonjs(),
       alias({
