@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-const path = require('path');
+const path = require("path");
 
 /**
  * This webpack config does a production build for xterm.js headless. It works by taking the output
@@ -14,35 +14,35 @@ const path = require('path');
  * @type {import('webpack').Configuration}
  */
 const config = {
-  entry: './out/headless/public/Terminal.js',
-  devtool: 'source-map',
+  entry: "./out/headless/public/Terminal.js",
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.js$/,
         use: ["source-map-loader"],
         enforce: "pre",
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    modules: ['./node_modules'],
-    extensions: [ '.js' ],
+    modules: ["./node_modules"],
+    extensions: [".js"],
     alias: {
-      common: path.resolve('./out/common'),
-      headless: path.resolve('./out/headless')
-    }
+      common: path.resolve("./out/common"),
+      headless: path.resolve("./out/headless"),
+    },
   },
   output: {
-    filename: 'xterm-headless.js',
-    path: path.resolve('./headless/lib-headless'),
+    filename: "xterm-headless.js",
+    path: path.resolve("./headless/lib-headless"),
     library: {
-      type: 'commonjs'
+      type: "commonjs",
     },
     // Force usage of globalThis instead of global / self. (This is cross-env compatible)
-    globalObject: 'globalThis',
+    globalObject: "globalThis",
   },
-  mode: 'production',
+  mode: "production",
 };
 module.exports = config;
